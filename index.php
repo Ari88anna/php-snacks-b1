@@ -31,8 +31,44 @@
             'punti_squadra_casa'=> 74,
             'punti_squadra_ospite'=> 71,
         ]
-    ];    
+    ];  
+
     
+    // Snack 2
+    // Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) 
+    // che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. 
+    // Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato”
+
+    // variabile GET name
+    $name = $_GET['name'];
+    // var_dump($name);
+    
+
+    // variabile GET  mail
+    $mail = $_GET['mail'];
+    // var_dump($mail);
+
+    // variabile GET age
+    $age = $_GET['age'];
+    // var_dump($age);
+
+    $output = 'Accesso riuscito';
+    
+    if (strlen($name) < 3 ) { // se la lunghezza di name è minore di 3
+
+        $output = 'Accesso negato';    
+   
+    } elseif ( strpos($mail, '@') === false || strpos($mail, '.') === false ) {  //Se la mail non contiene un punto e una chiocciola
+
+        $output = 'Accesso negato';
+
+    } elseif (!is_numeric($age)) { // se age non è un numero
+
+        $output = 'Accesso negato';
+
+    }
+
+    echo $output ;  
 
 ?>
 
@@ -52,9 +88,7 @@
     <ul>
         <?php for($i = 0; $i < count($squadre); $i++) { ?>
 
-            <?php $this_squadra = $squadre[$i]?>
-
-            
+            <?php $this_squadra = $squadre[$i]?>            
 
             <?php ?>
 
